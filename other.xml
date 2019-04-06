@@ -1,0 +1,37 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="PACKAGE_FILTER" value="numpy&#10;matplotlib&#10;bokeh&#10;panda&#10;Tkinter" />
+    <property name="PyCharm.InitialConfiguration" value="true" />
+    <property name="PyCharm.InitialConfiguration.V2" value="true" />
+    <property name="PyCharm.InitialConfiguration.V3" value="true" />
+    <property name="PyCharm.InitialConfiguration.V4" value="true" />
+    <property name="PyCharm.InitialConfiguration.V5" value="true" />
+    <property name="PyCharm.InitialConfiguration.V6" value="true" />
+    <property name="PyCharm.InitialConfiguration.V7" value="true" />
+    <property name="PyCharm.initialConfigurationShown" value="true" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/Desktop/Machine Learning A-Z Template Folder&#10;/home/ben/Desktop/Machine Learning A-Z Template Folder/Part 1 - Data Preprocessing&#10;/home/ben/Desktop/Python Proj/Data_env/Interface.py&#10;/home/ben/Desktop/Python Proj/Data_env/venv&#10;/home/ben/Desktop/Python Proj/Data_env/homework_solution.py&#10;/home/ben/Desktop/Python Proj/Data_env/Test Bokeh.py&#10;/home/ben/Desktop/Python Proj/Data_env/classifier.py&#10;/home/ben/Desktop/Python Proj/Data_env" />
+    <property name="file.gist.reindex.count" value="12749" />
+    <property name="fileTypeChangedCounter" value="1" />
+    <property name="lastTip" value="8" />
+  </component>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="$USER_HOME$/Desktop/Python Proj/Data_env/venv/bin/python" value="false" />
+        <entry key="/usr/bin/python3.6" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="$USER_HOME$/Desktop/Python Proj/Data_env/venv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_TRIALTEST">
+      <map>
+        <entry key="$USER_HOME$/Desktop/Python Proj/Data_env/venv/bin/python" value="false" />
+      </map>
+    </option>
+  </component>
+</application>
