@@ -24,7 +24,7 @@ from bokeh.plotting import figure, show, output_file
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 
-# Emotion list
+# Emotion list 123 + 123
 
 
 
