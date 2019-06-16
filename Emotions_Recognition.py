@@ -17,25 +17,19 @@ from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, show, output_file
 
 
-
-
-
-# Loading the cascades
+# Loading the cascadesclassifier
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 
-# Emotion list
-
-
-
+# Emotions list
 emojis = ["sadness","surprise"]
-# Initialize fisher face classifier
+#Initialize fisher face classifier
 fisher_face = cv2.face.FisherFaceRecognizer_create()
 data = {}
 
 ###############################################Training#################################################################
 
-# Function definition to get file list, randomly shuffle it and split 67/33
+# Function definition to get file list, randomly shuffle and split 67/33
 def getFiles(emotion):
     files = gb.glob("final_dataset/%s/*" % emotion)
     random.shuffle(files)
@@ -65,11 +59,9 @@ def makeTrainingAndValidationSet():
             prediction_labels.append(emojis.index(emotion))
     return training_data, training_labels, prediction_data, prediction_labels
 
-########################################################################################################################
-
 ##################################################Detecting Funcs#######################################################
 
-#Activate Training
+#Activate training
 def runClassifier():
     training_data, training_labels, prediction_data, prediction_labels = makeTrainingAndValidationSet()
 
@@ -109,10 +101,8 @@ def detect(gray, frame):
             cv2.rectangle(roi_color, (sx, sy), (sx+sw, sy+sh), (0, 0, 255), 2)
     return frame, emotion
 
-
-
-# Creating the Classfier
-def Create_Classfier():
+# Creating the classfier
+def createClassfier():
     # Run the trainer & validator to get ready to do the emotion recognition
     metascore = []
     for i in range(0, 10):
@@ -121,20 +111,16 @@ def Create_Classfier():
         metascore.append(right)
     print("\n\nend score:", np.mean(metascore), "percent right!")
 
-#######################################################################################################################
-
-
-
-############################################# Function Used by Buttons##################################################
 
 #Globales
 time_line = []
 emotion_axis = []
 num_of_times=[0,0,0]
 canvas = np.zeros([480, 640, 3], dtype=np.uint8)
+
 ##############################################################Plots#####################################################
 
-def Pie():
+def pie():
     x = {
         'Other': num_of_times[0],
         'Sadness':  num_of_times[1],
@@ -158,7 +144,7 @@ def Pie():
 
     return p
 
-def Histogram():
+def histogram():
     emotion = ['Other', 'Sadness','Happy']
     counts = [num_of_times[0], num_of_times[1], num_of_times[2]]
 
@@ -177,7 +163,7 @@ def Histogram():
     p.legend.location = "top_left"
     return p
 
-def LinePlot():
+def linePlot():
     name = "0-Other\n 1-Sadness \n 2-Happy"
     color = ["red"]
     f = figure(title="Emotions Vs Time")
@@ -192,8 +178,8 @@ def LinePlot():
 
 
 
-#Start Function: Running the backstage code
-def Start(button1,button2,button3,button4):
+#Start function: backstage code
+def startFunc(button1,button2,button3,button4):
     # Initializing time
     t0 = time.time()
     th = 1
@@ -221,7 +207,6 @@ def Start(button1,button2,button3,button4):
                     th += 1
                     emotion_axis.append(emotion)
                     num_of_times[emotion]=num_of_times[emotion]+1
-
         else:
             continue
         #Buttons Actions
@@ -230,7 +215,6 @@ def Start(button1,button2,button3,button4):
         if button2 != None:
             button2.invoke()
         if button3 != None:
-            print("3 is Alive")
             button3.invoke()
         if button4!= None:
             button4.invoke()
@@ -240,47 +224,47 @@ def Start(button1,button2,button3,button4):
 
 
 
-#Whene Grided will show the frame which is caputerd
-def show_frame():
+#When Grided will show the frame which is caputerd
+def showFrame():
     frame = cv2.flip(canvas, 1)
     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
     img = Image.fromarray(cv2image)
     imgtk = ImageTk.PhotoImage(image=img)
     lmain.imgtk = imgtk
     lmain.configure(image=imgtk)
-    lmain.after(10, show_frame)
+    lmain.after(10, showFrame)
 
-#Griding the Show_frame to this the video
-def Show_camera():
+#Griding the frame to the video 
+def showCamera():
     imageFrame.grid(row=4, column=0 ,columnspan = 5, padx=6, pady=6, sticky='ew')
 
-#Ungriding the show_frame
-def Close_camera():
+#Ungriding the showFrame
+def closeCamera():
     imageFrame.grid_remove()
 
 
 #Creating the Plots for the data
-def Plot_Bokeh(typePlot,):
+def plotBokeh(typePlot,):
     output_file("Plot.html",title="Analyzed Data")
     f = figure()
     if(typePlot=="LinePlot"):
-        f =LinePlot()
+        f =linePlot()
     if(typePlot=="Histogram"):
-        f=Histogram()
+        f=histogram()
     if (typePlot == "Pie"):
-        f = Pie()
+        f = pie()
     show(f)
 
 
-#Whene closing Tkinter
-def on_closing():
+#closing Tkinter
+def onClosing():
     cv2.destroyAllWindows()
     root.destroy()
     try:
         video_capture.release()
     except:
         print("close")
-#Pressing the Exit button on Tkinter
+#Exit button
 def Exit():
     cv2.destroyAllWindows()
     root.destroy()
@@ -288,27 +272,26 @@ def Exit():
         video_capture.release()
     except:
         print("close")
-#plot the instroctions for App
-def OpenPdf():
+
+#plot the instructions for App
+def openPdf():
     webbrowser.open_new(r'writeup_group54.pdf')
 
-#Open new Thread for Start Function
-def ThreadFunc():
-    t = Thread(target=Start,args =[button2,button3,button4,button5])
+#Open new Thread for startFunc
+def threadFunc():
+    t = Thread(target=startFunc,args =[button2,button3,button4,button5])
     t.daemon = True
     t.start()
-
-########################################################################################################################
 
 ##################################################GUI###################################################################
 
 
 
-#Init of Text's
+#Init of texts
 type1 = "LinePlot"
 type2 = "Histogram"
 type3 = "Pie"
-InstructPLot = "Choose the Data you\n Want to Analyze:"
+instruct_plot = "Choose the data you\n want to analyze:"
 title = "Emotions Recognition"
 
 #Tkinter init
@@ -325,18 +308,18 @@ lmain.grid(row=0, column=0)
 
 
 #Buttons
-button2 = ttk.Button(root, text="Show Camera", command=Show_camera).grid(row=1, column=0,padx=4, pady=4, sticky='ew')
+button2 = ttk.Button(root, text="Show Camera", command=showCamera).grid(row=1, column=0,padx=4, pady=4, sticky='ew')
 
-button3 =ttk.Button(root, text="Close Camera", command=Close_camera).grid(row=2,
+button3 =ttk.Button(root, text="Close Camera", command=closeCamera).grid(row=2,
                                                                           column=0,padx=4, pady=4, sticky='ew')
 
-button4=ttk.Button(root,text = "Plot",command=lambda: Plot_Bokeh(PlotChosen.get())).grid(row=1, column=3,
+button4=ttk.Button(root,text = "Plot",command=lambda: plotBokeh(PlotChosen.get())).grid(row=1, column=3,
                                                                          columnspan =5,padx=4, pady=4, sticky='wnse')
 
 button5 =ttk.Button(root, text="Exit", command=Exit).grid(row=0, column=3,
                                                           columnspan =5,padx=4, pady=4, sticky='wnse')
 
-button6 = ttk.Button(root, text="Instructions", command=OpenPdf).grid(row=2,
+button6 = ttk.Button(root, text="Instructions", command=openPdf).grid(row=2,
                                                               column=1, columnspan =6,padx=6, pady=6, sticky='we')
 
 #CheckBox + Button1 + Label
@@ -346,21 +329,21 @@ PlotChosen['values']= (type1,type2,type3)
 PlotChosen.grid(row=1, column=1,columnspan=2, padx=6, pady=6, sticky="wnse")
 PlotChosen.current(0)
 
-ttk.Label(root, text=InstructPLot).grid(row=0, column=1,columnspan=2, padx=6, pady=6, sticky="wnse")
-button1 =ttk.Button(root, text="Start", command= ThreadFunc).grid(row=0, column=0,padx=4, pady=4, sticky='ew')
+ttk.Label(root, text=instruct_plot).grid(row=0, column=1,columnspan=2, padx=6, pady=6, sticky="wnse")
+button1 =ttk.Button(root, text="Start", command= threadFunc).grid(row=0, column=0,padx=4, pady=4, sticky='ew')
 
 
 if __name__ == '__main__':
 
     #Start the Classfier
-    Create_Classfier()
+    createClassfier()
 
 
 
     # Running GUI
-    show_frame()
+    showFrame()
     root.resizable(False, False)
-    root.protocol("WM_DELETE_WINDOW", on_closing)
+    root.protocol("WM_DELETE_WINDOW", onClosing)
     root.mainloop()
 
 
