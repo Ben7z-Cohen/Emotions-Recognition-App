@@ -1,4 +1,4 @@
-# Emotions-Recognition-App
+# Emotion-Recognition-App
 Using FisherFace and Haar-like features techniques to identify "emotions" (Facial expression) in real time.
 The App is controlled by GUI which can show the identification, another ability is to collect the "emotions" over a period of time
 and to provide analysis on them from three points of views using Bokeh.
