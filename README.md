@@ -5,4 +5,4 @@ and to provide analysis on them from three points of views using Bokeh.
 NOTE: at the moment the classifier is created in real time with a small dataset - the results are not that good.
 The next step is to train CNN/SSD with a large dataset, getting the weights and provide better results. 
 
-WIP - implementing OOP design for the app & adjusting the syntax to PEP 8 style. 
+WIP - implementing OOP design for the app & adjusting the syntax to PEP 8. 
