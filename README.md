@@ -6,6 +6,5 @@ NOTE: At the moment the classifier is created pre-running with a small dataset -
 
 `Work in progress:` 
 
-Improving the project with the following steps: 
-  1.Using CNN classifier. 
-  2.Implementing OOP design & adjusting the syntax to PEP 8. 
+Improving the project with the following steps:                                                                                                 1.Using CNN classifier.                                                                                                                 
+    2.Implementing OOP design & adjusting the syntax to PEP 8. 
