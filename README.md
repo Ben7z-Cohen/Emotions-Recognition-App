@@ -1,8 +1,13 @@
 # Emotion-Recognition-App
 Using FisherFace and Haar-like features techniques to identify "emotions" (Facial expression) in real time.
 The App is controlled by GUI which can show the identification.
-Furthermore, the app would collect the "emotions" over a period of time and provide grapical analysis using Bokeh.
-NOTE: at the moment the classifier is created in real time with a small dataset - the results are not that good.
-The next step is to train CNN/SSD with a large dataset, getting the weights and provide better results. 
+Furthermore, the app would collect the "emotions" over a period of time and provide grapical analysis using bokeh module.
+NOTE: At the moment the classifier is created pre-running with a small dataset - the results are bad.
 
-WIP - implementing OOP design for the app & adjusting the syntax to PEP 8. 
+`Work in progress:` 
+
+Improving the project with the following steps: 
+
+  1.Using CNN classifier. 
+  
+  2.Implementing OOP design & adjusting the syntax to PEP 8. 
