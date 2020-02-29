@@ -23,11 +23,11 @@ smile_cascade = cv2.CascadeClassifier('haarcascade_smile.xml')
 
 # Emotions list
 emojis = ["sadness","surprise"]
+
 #Initialize fisher face classifier
 fisher_face = cv2.face.FisherFaceRecognizer_create()
 data = {}
 
-###############################################Training#################################################################
 
 # Function definition to get file list, randomly shuffle and split 67/33
 def getFiles(emotion):
@@ -59,7 +59,6 @@ def makeTrainingAndValidationSet():
             prediction_labels.append(emojis.index(emotion))
     return training_data, training_labels, prediction_data, prediction_labels
 
-##################################################Detecting Funcs#######################################################
 
 #Activate training
 def runClassifier():
@@ -84,7 +83,6 @@ def runClassifier():
     return ((100 * right) / (right + wrong))
 
 
-#Creating Canvas for Detections
 def detect(gray, frame):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     emotion = None
@@ -118,7 +116,6 @@ emotion_axis = []
 num_of_times=[0,0,0]
 canvas = np.zeros([480, 640, 3], dtype=np.uint8)
 
-##############################################################Plots#####################################################
 
 def pie():
     x = {
@@ -173,10 +170,6 @@ def linePlot():
     f.legend.location = "top_left"
     return f
 
-########################################################################################################################
-
-
-
 
 #Start function: backstage code
 def startFunc(button1,button2,button3,button4):
@@ -221,7 +214,6 @@ def startFunc(button1,button2,button3,button4):
             break
     video_capture.release()
     cv2.destroyAllWindows()
-
 
 
 #When Grided will show the frame which is caputerd
@@ -283,9 +275,6 @@ def threadFunc():
     t.daemon = True
     t.start()
 
-##################################################GUI###################################################################
-
-
 
 #Init of texts
 type1 = "LinePlot"
@@ -334,12 +323,8 @@ button1 =ttk.Button(root, text="Start", command= threadFunc).grid(row=0, column=
 
 
 if __name__ == '__main__':
-
-    #Start the Classfier
     createClassfier()
-
-
-
+    
     # Running GUI
     showFrame()
     root.resizable(False, False)
