@@ -7,5 +7,5 @@ NOTE: At the moment the classifier was created with a small dataset for only thr
 
 **Work in progress:**<br/>                                                                                                                  Replacing FisherFace classifier with CNN classifier.<br/>                                                                                                                
 #### How to run?<br/>
-`pip install -r requirements.txt`
+`pip install -r requirements.txt`<br/>
 run `emotions_recognition.py`
