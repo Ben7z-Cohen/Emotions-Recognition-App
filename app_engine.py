@@ -1,5 +1,4 @@
 import numpy as np
-from singleton import Singleton
 from classifier_handler import ClassifierHandler
 
 
