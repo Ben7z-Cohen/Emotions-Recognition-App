@@ -17,7 +17,7 @@ class PlotType(Enum):
 class Plot:
 
     def __init__(self, app_engine):
-        self.app_engine = app_engine
+        self._app_engine = app_engine
 
     @abstractmethod
     def plot(self):
@@ -25,39 +25,39 @@ class Plot:
 
     def emotions_dict(self):
         emotions_dict = {}
-        for i in range(len(self.app_engine.emotions)):
-            emotions_dict[self.app_engine.emotions[i]] = self.app_engine.num_of_appearance[i]
+        for i in range(len(self._app_engine.emotions)):
+            emotions_dict[self._app_engine.emotions[i]] = self._app_engine.num_of_appearance[i]
         return emotions_dict
 
     def create_names_string(self):
         names_string = ''
-        for index, name in enumerate(self.app_engine.emotions):
+        for index, name in enumerate(self._app_engine.emotions):
             names_string += str(index) + '-' + name + '\n'
         return names_string
 
     @property
     def num_of_appearance(self):
-        return self.app_engine.num_of_appearance
+        return self._app_engine.num_of_appearance
 
     @property
     def time_line(self):
-        return self.app_engine.time_line
+        return self._app_engine.time_line
 
     @property
     def emotion_axis(self):
-        return self.app_engine.emotion_axis
+        return self._app_engine.emotion_axis
 
     @property
     def emotions(self):
-        return self.app_engine.emotions
+        return self._app_engine.emotions
 
     def factory(self, plot_type):
         if plot_type == PlotType.Pie.value[0]:
-            return Pie(self.app_engine)
+            return Pie(self._app_engine)
         if plot_type == PlotType.Line.value[0]:
-            return Line(self.app_engine)
+            return Line(self._app_engine)
         if plot_type == PlotType.Histogram.value:
-            return Histogram(self.app_engine)
+            return Histogram(self._app_engine)
 
         assert 0, "Bad plot creation: " + plot_type
 
