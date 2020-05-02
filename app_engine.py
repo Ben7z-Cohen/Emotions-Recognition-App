@@ -3,6 +3,7 @@ from classifier_handler import ClassifierHandler
 
 
 class AppEngine:
+
     EMOTIONS = ["sadness", "surprise"]
 
     def __init__(self):

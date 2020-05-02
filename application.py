@@ -15,6 +15,7 @@ from singleton import Singleton
 
 
 class Application(metaclass=Singleton):
+
     def __init__(self, engine):
         self.init_texts()
         self.init_tkinter()
@@ -65,7 +66,7 @@ class Application(metaclass=Singleton):
                  padx=4, pady=4,
                  sticky='ew')
         self._close_camera_button = ttk.Button(self._root, text="Close Camera",
-                                               command=self.close_camera).\
+                                               command=self.close_camera). \
             grid(row=2,
                  column=0,
                  padx=4,
@@ -73,7 +74,7 @@ class Application(metaclass=Singleton):
                  sticky='ew')
         self._plot_button = ttk.Button(self._root, text="Plot",
                                        command=lambda:
-                                      self.handle_plot(self._plot_chosen.get())). \
+                                       self.handle_plot(self._plot_chosen.get())). \
             grid(row=1,
                  column=3,
                  columnspan=5,
@@ -193,4 +194,3 @@ class Application(metaclass=Singleton):
         self._root.resizable(False, False)
         self._root.protocol("WM_DELETE_WINDOW", self.on_closing)
         self._root.mainloop()
-

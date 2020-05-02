@@ -40,7 +40,6 @@ class ClassifierHandler:
                 prediction_labels.append(self._app_engine.EMOTIONS.index(emotion))
         return training_data, training_labels, prediction_data, prediction_labels
 
-
     def train_and_test_classifier(self):
         training_data, training_labels, prediction_data, \
         prediction_labels = self.make_training_and_validation_set()
@@ -79,10 +78,10 @@ class ClassifierHandler:
         emotion = None
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            roi_gray1 = gray[y:y + h, x:x + w]
+            # roi - region of interest
             roi_gray = gray[y:y + h, x:x + w]
             roi_color = frame[y:y + h, x:x + w]
-            resized_image = cv2.resize(roi_gray1, (350, 350))
+            resized_image = cv2.resize(roi_gray, (350, 350))
             emotion, c = self._fisher_face.predict(resized_image)
             smiles = self._smile_cascade.detectMultiScale(roi_gray, 1.7, 22)
             for (sx, sy, sw, sh) in smiles:
